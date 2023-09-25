@@ -1,0 +1,39 @@
+[System]
+Name='KipasAnginMamdani'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='kecepatan'
+Range=[0 5000]
+NumMFs=2
+MF1='cepat':'trapmf',[1000 5000 5000 5000]
+MF2='lambat':'trapmf',[0 0 1000 5000]
+
+[Input2]
+Name='suhu'
+Range=[0 600]
+NumMFs=2
+MF1='rendah':'trapmf',[0 0 100 600]
+MF2='tinggi':'trapmf',[100 600 600 600]
+
+[Output1]
+Name='frekuensi'
+Range=[0 7000]
+NumMFs=2
+MF1='kecil':'trapmf',[0 0 2000 7000]
+MF2='besar':'trapmf',[2000 7000 7000 7000]
+
+[Rules]
+2 2, 1 (1) : 1
+2 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 1, 2 (1) : 1
